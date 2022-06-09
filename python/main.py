@@ -47,11 +47,10 @@ def create():
         }
     headers = {"Content-Type": "application/json"}
     r = requests.post(server, data=json.dumps(data), headers=headers)
-
     print(r.status_code)
     request_status("post", r.status_code)
 
-
+# display request status message
 def request_status(method, code):
     if method == "post" and code == 201:
         print("Entity has been created")
