@@ -15,8 +15,9 @@ The FIWARE-NGSI v2 API uses the Orion Context Broker, a Powerful REST API, to pe
 ### Application: 
 #### Context Management Using Orion Context Broker, MongoDB and Python REST API Client
 ![Archtecture](architecture.png)
-The Orion Context Broker uses Mongodb to store context information
-#####Requirements:
+The Orion Context Broker uses Mongodb to store context information. 
+The API client accesses context data via the Orion API by help of REST CRUD methods
+####Requirements:
 MongoDB Services (MongoDB container running on Docker)
 ```
 docker pull mongo:4.2 docker
