@@ -15,4 +15,29 @@ The FIWARE-NGSI v2 API uses the Orion Context Broker, a Powerful REST API, to pe
 ### Application: 
 #### Context Management Using Orion Context Broker, MongoDB and Python REST API Client
 ![Archtecture](architecture.png)
+The Orion Context Broker uses Mongodb to store context information
 #####Requirements:
+MongoDB Services (MongoDB container running on Docker)
+```
+docker pull mongo:4.2 docker
+```
+Fiware Orion Broker API service (Orion Container running on Docker)
+```
+docker pull fiware/orion 
+docker network create fiware_default
+```
+Run containers
+```
+docker run -d --name=mongo-db --network=fiware_default --expose=27017 mongo:4.2 --bind_ip_all
+docker run -d --name fiware-orion -h orion --network=fiware_default -p 1026:1026 fiware/orion -dbhost mongo-db
+```
+Install the required libraries
+```
+pip3 install -r requirements.txt
+```
+Run the python API client
+```
+python3 python/main.py
+```
+The main script implementation fetches context data from the Orion API using the GET method. 
+The script can be modified to add other functionalities such as Fetching specific entities with a specified entity id, Use the POST method to add new entities and the PUT and DELETE methods
